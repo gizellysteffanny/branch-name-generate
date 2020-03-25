@@ -21,7 +21,7 @@ export class GenerateNameComponent implements OnInit {
 
   generate(): void {
     this.branchName = `${this.typeBranch}/${this.getTitle()}`;
-    this.firstMessageCommit = `${this.typeBranch}/${this.getTitle()}`;
+    this.firstMessageCommit = `${this.typeBranch}/${this.getMessageCommit()}`;
     this.submitted = true;
   }
 
@@ -37,6 +37,14 @@ export class GenerateNameComponent implements OnInit {
     title = title.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 
     return title;
+  }
+
+  private getMessageCommit(): string {
+    let message = this.title.toLowerCase().trim();
+    message = message.split(" ").join(" ");
+    message = message.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+
+    return message;
   }
 
 }
