@@ -34,9 +34,12 @@ export class GenerateNameComponent implements OnInit {
   }
 
   private getTextFormatted() {
-    const text = this.title.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
-    let title = text.replace(/ +/g, ' ').replace(/\s/g, "-");
-    let message = text.replace(/ +/g, ' ').replace(/\s/g, " ");
+    const text = this.title.normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[(\,|\.|\;|\:)]/gi, '')
+      .toLowerCase().trim();
+    let title = text.replace(/ +/g, ' ').replace(/\s/g, '-');
+    let message = text.replace(/ +/g, ' ').replace(/\s/g, ' ');
 
     return {title, message};
   }
