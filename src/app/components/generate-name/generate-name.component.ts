@@ -1,18 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { timer, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-generate-name',
   templateUrl: './generate-name.component.html',
   styleUrls: ['./generate-name.component.scss']
 })
-export class GenerateNameComponent implements OnInit {
+export class GenerateNameComponent implements OnInit, OnDestroy {
   typeBranch = 'feature';
   title = '';
   branchName = '';
 
+  copied = false;
+  subscription: Subscription
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   generate(): void {
@@ -26,10 +35,16 @@ export class GenerateNameComponent implements OnInit {
   }
 
   copy() {
-    let copyText = document.getElementById("branchName") as HTMLInputElement;
-    copyText.select();
-    copyText.setSelectionRange(0, 99999)
-    document.execCommand("copy");
+    if (this.title.length > 0) {
+      let copyText = document.getElementById("branchName") as HTMLInputElement;
+      copyText.select();
+      copyText.setSelectionRange(0, 99999)
+      document.execCommand("copy");
+
+      this.copied = true;
+
+      this.subscription = timer(2000).subscribe(() => this.copied = false);
+    }
   }
 
   private getTextFormatted() {

@@ -37,6 +37,8 @@
               [value]="branchName">
             <img src="assets/img/copy.svg" alt="Copy" class="copy">
           </div>
+
+          <p class="copy-feedback" [ngClass]="{'copied ': copied}">Copied to clipboard!</p>
         </div>
       </form>
     </div>

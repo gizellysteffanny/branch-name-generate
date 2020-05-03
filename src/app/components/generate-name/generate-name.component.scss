@@ -38,7 +38,7 @@
       display: inline-block;
 
       @include landscape-phones {
-        margin-bottom: 16px;
+        margin: 16px 0;
       }
     }
   }
@@ -139,6 +139,19 @@
                   cursor: pointer;
                 }
               }
+
+              .copy-feedback {
+                margin: 0;
+                font-size: 12px;
+                color: #2ecc71;
+                font-weight: 500;
+                opacity: 0;
+                transition: opacity 1s ease-out;
+
+                &.copied {
+                  opacity: 1;
+                }
+              }
             }
           }
         }
@@ -147,6 +160,7 @@
       &.hero-img {
         img {
           max-width: 100%;
+          user-select: none;
         }
       }
     }
