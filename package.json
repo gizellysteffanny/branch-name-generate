@@ -1,13 +1,32 @@
 {
   "name": "branch-name-generate",
-  "version": "0.0.0",
+  "description": "Branch names with git flow structure",
+  "version": "1.0.0",
+  "author": "Gizelly Steffanny",
+  "license": "MIT",
+  "homepage": "https://gizellysteffanny.github.io/branch-name-generate",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gizellysteffanny/branch-name-generate.git"
+  },
+  "keywords": [
+    "Generate",
+    "Git",
+    "Git flow",
+    "Branch",
+    "Branch name"
+  ],
+  "bugs": {
+    "url": "https://github.com/gizellysteffanny/branch-name-generate/issues"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "gh-pages -d dist/branch-name-generate"
   },
   "private": true,
   "dependencies": {
@@ -29,10 +48,11 @@
     "@angular/cli": "~9.0.7",
     "@angular/compiler-cli": "~9.0.7",
     "@angular/language-service": "~9.0.7",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
+    "gh-pages": "^2.2.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.3.0",
