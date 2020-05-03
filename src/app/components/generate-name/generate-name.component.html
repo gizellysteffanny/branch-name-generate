@@ -1,40 +1,47 @@
-<div class="container d-flex justify-content-center align-items-center hv-100">
-  <div class="jumbotron">
-    <h3 class="display-5">A simple generator branches name from title, using the git flow structure.</h3>
-    <p >This website generate a name for your branch from title and, generate a name for first commit(optional), just if you want follow the git flow..</p>
-    <hr class="my-4">
+<div class="box-hero">
+  <header>
+    <h6>Generator</h6>
+  </header>
 
-    <div class="row" *ngIf="!submitted">
-      <div class="col-12 col-md-6">
-        <form #form="ngForm">
-          <div class="form-group">
-            <label for="typeBranch">Type Branch</label>
-            <select class="form-control" id="typeBranch" name="typeBranch" [(ngModel)]="typeBranch">
-              <option>feature</option>
-              <option>bugfix</option>
-              <option>hotfix</option>
-              <option>release</option>
-            </select>
+  <div class="flex-container">
+    <div class="flex-item hero-text">
+      <h2>Branch names with git flow structure</h2>
+      <p>Generate names for your branch from the title very quickly!</p>
+
+      <form class="hero-form">
+        <div class="form-group">
+          <label for="typeBranch">TYPE BRANCH</label>
+          <select class="form-control" id="typeBranch" name="typeBranch"
+          (change)="generate()"
+          [(ngModel)]="typeBranch">
+            <option value="feature">Feature</option>
+            <option value="bugfix">Bugfix</option>
+            <option value="hotfix">Hotfix</option>
+            <option value="release">Release</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="title">TITLE</label>
+          <input type="text" class="form-control" id="title" name="title"
+          placeholder="ex: relayout login"
+          (keyup)="generate()"
+          [(ngModel)]="title">
+        </div>
+
+        <div class="form-group branch-name">
+          <label for="title">YOUR BRANCH NAME IS:</label>
+          <div class="copy" (click)="copy()">
+            <input type="text" class="form-control" id="branchName"
+              readonly
+              [value]="branchName">
+            <img src="assets/img/copy.svg" alt="Copy" class="copy">
           </div>
-          <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" name="title" [(ngModel)]="title">
-          </div>
-          <div class="form-group">
-            <button type="button" class="btn btn-primary mt-3" (click)="generate()"
-            [attr.disabled]="(!typeBranch || !title) ? true : null">generate</button>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
-
-    <div class="row" *ngIf="submitted">
-      <div class="col-12">
-        <p>Your branch name is: <strong>{{ branchName }}</strong></p>
-        <p>Optional first message commit: <strong>{{ firstMessageCommit }}</strong></p>
-
-        <button type="button" class="btn btn-primary" (click)="tryAgain()">try again</button>
-      </div>
+    <div class="flex-item hero-img">
+      <img src="assets/img/hero-img.svg" alt="Hero img">
     </div>
   </div>
 </div>

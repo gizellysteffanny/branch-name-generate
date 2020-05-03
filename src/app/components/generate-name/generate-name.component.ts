@@ -6,13 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./generate-name.component.scss']
 })
 export class GenerateNameComponent implements OnInit {
-  typeBranch: string;
-  title: string;
-
+  typeBranch = 'feature';
+  title = '';
   branchName = '';
-  firstMessageCommit = '';
-
-  submitted = false;
 
   constructor() { }
 
@@ -20,17 +16,20 @@ export class GenerateNameComponent implements OnInit {
   }
 
   generate(): void {
-    const { title, message } = this.getTextFormatted();
+    const title = this.getTextFormatted();
 
-    this.branchName = `${this.typeBranch}/${title}`;
-    this.firstMessageCommit = `${this.typeBranch}/${message}`;
-    this.submitted = true;
+    if (this.title.length <= 0) {
+      this.branchName = '';
+    } else {
+      this.branchName = `${this.typeBranch}/${title}`;
+    }
   }
 
-  tryAgain(): void {
-    this.typeBranch = '';
-    this.title = '';
-    this.submitted = false;
+  copy() {
+    let copyText = document.getElementById("branchName") as HTMLInputElement;
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
   }
 
   private getTextFormatted() {
@@ -39,9 +38,8 @@ export class GenerateNameComponent implements OnInit {
       .replace(/[(\,|\.|\;|\:)]/gi, '')
       .toLowerCase().trim();
     let title = text.replace(/ +/g, ' ').replace(/\s/g, '-');
-    let message = text.replace(/ +/g, ' ').replace(/\s/g, ' ');
 
-    return {title, message};
+    return title;
   }
 
 }

@@ -1,3 +1,113 @@
-.hv-100 {
-  height: 100vh;
+.box-hero {
+  height: 720px;
+  width: 1170px;
+  border-radius: 24px;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 52px 0 rgba(138,143,179,0.52);
+  padding: 100px;
+
+  header {
+    h6 {
+      color: #EC615B;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 19px;
+      margin-bottom: 32px;
+      display: inline-block;
+    }
+  }
+
+  .flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .flex-item {
+
+      &.hero-text {
+        h2 {
+          max-width: 416px;
+          color: #5222D0;
+          font-family: Poppins;
+          font-size: 40px;
+          font-weight: bold;
+          letter-spacing: 0;
+          line-height: 48px;
+          margin-bottom: 8px;
+        }
+
+        p {
+          max-width: 353px;
+          color: #161616;
+          font-family: Roboto;
+          font-size: 20px;
+          font-weight: 300;
+          letter-spacing: 0;
+          line-height: 24px;
+          margin-bottom: 40px;
+        }
+
+        .hero-form {
+          .form-group {
+            label {
+              color: #757575;
+              font-family: Roboto;
+              font-size: 13px;
+              font-weight: 500;
+              letter-spacing: 0;
+              line-height: 15px;
+            }
+
+            input, select {
+              box-sizing: border-box;
+              height: 51px;
+              max-width: 354px;
+              border: 1px solid #E8E8E8;
+              border-radius: 5px;
+              padding: 0 16px;
+
+              color: #161616;
+              font-family: Roboto;
+              font-size: 16px;
+              letter-spacing: 0;
+              line-height: 19px;
+
+              &::placeholder {
+                color: #6F6F6F;
+              }
+            }
+
+            select {
+              -webkit-appearance: none;
+              background-image: url('/assets/img/arrow-down.svg');
+              background-repeat: no-repeat;
+              background-position-y: center;
+              background-position-x: calc(100% - 16px);
+            }
+
+            &.branch-name {
+
+              .copy {
+                max-width: 354px;
+                position: relative;
+                input {
+                  color: #5222D0;
+                  background-color: #fff;
+                  padding-right: 40px;
+                }
+
+                img {
+                  position: absolute;
+                  top: calc(25.5px - 7px);
+                  right: 16px;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
